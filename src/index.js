@@ -6,6 +6,7 @@ import VertexShader from './main.vert';
 
 
 let regl;
+let mouse = { x: 0, y: 0 };
 
 
 const drawTriangle = (regl) => regl({
@@ -32,6 +33,7 @@ const drawTriangle = (regl) => regl({
       props.color[2],
       1.,
     ],
+    mouse: () => [mouse.x, mouse.y],
   },
 
   count: 3,
@@ -50,9 +52,17 @@ const drawFrame = () => {
 };
 
 
+const updateMousePosition = (event) => {
+  const { x, y } = event;
+  mouse = { x, y };
+};
+
+
 const init = () => {
   regl = createREGL();
   regl.frame(drawFrame);
+
+  document.addEventListener('mousemove', updateMousePosition);
 };
 
 
