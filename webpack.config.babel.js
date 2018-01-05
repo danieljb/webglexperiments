@@ -25,9 +25,9 @@ module.exports = (env = {}) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.glsl$/,
+          test: /\.(glsl|frag|vert)$/,
           exclude: /node_modules/,
-          loader: 'webpack-glsl',
+          loader: 'raw-loader',
         },
       ],
     },

@@ -1,32 +1,16 @@
 
 import createREGL from 'regl';
 
+import FragmentShader from './main.frag';
+import VertexShader from './main.vert';
+
 
 let regl;
 
 
 const drawTriangle = (regl) => regl({
-  frag: `
-    precision mediump float;
-
-    uniform vec2 resolution;
-    uniform vec4 color;
-
-    void main () {
-      vec2 st = gl_FragCoord.xy / resolution.xy;
-      gl_FragColor = vec4(st.x, st.y, 0., 1.);
-    }
-  `,
-
-  vert: `
-    precision mediump float;
-
-    attribute vec2 position;
-
-    void main () {
-      gl_Position = vec4(position, 0, 1.);
-    }
-  `,
+  frag: FragmentShader,
+  vert: VertexShader,
 
   attributes: {
     position: [
